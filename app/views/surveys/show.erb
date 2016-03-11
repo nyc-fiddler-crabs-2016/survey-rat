@@ -1,0 +1,13 @@
+<h3><%=@survey.title%></h3>
+
+<!-- Where are we posting this? -->
+
+<form method="POST" action="/">
+  <%@survey.questions.each do |question|%>
+    <%=question.content%><br />
+    <%question.possible_choices.each do |possible_choice|%>
+    <input type="radio" name="<%=possible_choice.question_id%>" value="<%=possible_choice.option%>"><%=possible_choice.option%><br />
+    <%end%>
+  <%end%>
+<input type="submit" value="Submit">
+</form>
