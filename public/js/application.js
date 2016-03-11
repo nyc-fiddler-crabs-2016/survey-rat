@@ -1,7 +1,14 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('.possibles').on("click", function(event){
+    var url = "/choices"
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: $(this).serialize()
+    }).done(function(response){
+      if (response) {
+        $("#container").append(response);
+      }
+    })
+  })
 });
