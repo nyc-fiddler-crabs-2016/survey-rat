@@ -4,6 +4,7 @@ class CreateChoices < ActiveRecord::Migration
       t.references :user, index: true
       t.references :possible_choice, index: true
       t.references :question, index: true
+      t.references :taken_survey, index: true
 
       t.timestamps null: false
     end
