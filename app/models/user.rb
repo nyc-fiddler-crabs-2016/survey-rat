@@ -2,8 +2,10 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :username, presence: true, uniqueness: true
-  validates :email, presence: true
   validates :password, presence: true
+  # include BCrypt
+  has_many :choices
+  has_many :taken_surveys
+  has_many :surveys
 
-  include BCrypt
 end
