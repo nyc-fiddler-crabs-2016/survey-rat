@@ -1,0 +1,1 @@
+This is my skeleton with basic user auth set up.
