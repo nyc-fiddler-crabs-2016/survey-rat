@@ -1,0 +1,13 @@
+<div id="question-list">
+<% @questions.each do |question| %>
+  <p><%= question.content %></p>
+  <form method="post" action="/choices">
+  <% question.possible_choices.each do |choice|%>
+    <div>
+      <%= choice.option %>
+      <input class="possibles" type="radio" name="possible_choice_id" value=<%= choice.id %>>
+    </div>
+  <% end %>
+  </form>
+<% end %>
+</div>
