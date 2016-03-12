@@ -15,4 +15,5 @@ end
 post '/surveys' do
   @survey = Survey.create(params[:survey])
   erb :'surveys/_new-question', locals: {surveys: @survey}, layout: false
+
 end

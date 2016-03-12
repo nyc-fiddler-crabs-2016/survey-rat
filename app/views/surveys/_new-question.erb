@@ -1,5 +1,5 @@
 <!-- move this file to better directory? -->
-<form method="POST" action="/questions">
+<form method="POST" id="question-creation" action="/questions">
 
     <!-- MAKE SURE THIS WORKS -->
     <input type="hidden" name="<%= @survey.id%>" value="<%= @survey.id %>">
@@ -8,5 +8,5 @@
     <input type="text" name="question[content]" size="50" placeholder="question"><br />
 
     <!-- AJAX here  -->
-  <input type="submit" value="Next Question">
+  <input type="submit" class="question-submission" value="Possible Choices">
 </form>

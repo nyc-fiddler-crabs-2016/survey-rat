@@ -8,5 +8,4 @@ end
 # Added by J & K
 post '/questions' do
   @question = Question.create(params[:question])
-  erb
 end
