@@ -7,7 +7,9 @@ $(document).ready(function() {
       data: $(this).serialize()
     }).done(function(response){
       if (response) {
-        $("#container").append(response);
+        if ($('#survey-submit').length == 0){
+          $('#container').append(response);
+        }
       }
     })
   })

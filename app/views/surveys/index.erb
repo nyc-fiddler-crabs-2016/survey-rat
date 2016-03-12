@@ -1,5 +1,20 @@
 <ul>
   <% @surveys.each do |survey| %>
-    <li><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></li>
+    <% if logged_in? && TakenSurvey.taken?(current_user.id, survey.id)%>
+      <li><%= survey.title %></li>
+    <% else %>
+      <li><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></li>
+    <% end %>
+    <% if logged_in? && current_user.id == survey.user_id %>
+      <div class="show-edit-delete">
+        <ul>
+        <li><a href=/users/<%= current_user.id%>/surveys/<%=survey.id%>>VIEW</a></li>
+        <li><a href=/surveys/<%= survey.id %>/edit>Edit</a></li>
+        <li><form action="surveys/<%= survey.id%>" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="DELETE">
+        </form></li>
+      </div>
+    <% end %>
   <% end %>
 </ul>
