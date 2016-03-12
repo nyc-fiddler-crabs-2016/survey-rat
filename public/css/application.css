@@ -1,3 +1,9 @@
+#container {
+    margin: 0 auto;
+    max-width: 720px;
+
+}
+
 .nav-bar ul {
     list-style-type: none;
     margin: 0;
@@ -24,4 +30,8 @@
 
 .active {
 background-color:#4CAF50;
+}
+
+.show-edit-delete ul {
+    list-style: none;
 }

@@ -22,3 +22,29 @@ get '/users/:id' do
   @user = User.find_by(id: params[:id])
   erb :'/users/show'
 end
+
+get '/users/:id/surveys/:id' do
+  @user = User.find_by(id: params[:captures][0])
+  @survey = Survey.find_by(id: params[:captures][1])
+  if @survey.user_id == current_user.id
+    @taken_surveys = TakenSurvey.where(survey_id: @survey.id)
+    @choices = {}
+    @taken_surveys.each do |taken_survey|
+      Choice.where(taken_survey_id: taken_survey.id).each do |choice|
+        if @choices[choice.question_id].nil?
+          @choices[choice.question_id] = []
+        end
+        @choices[choice.question_id] << choice.possible_choice_id
+      end
+    end
+
+    erb :"users/surveys/show"
+  else
+    redirect "/"
+  end
+end
+
+get '/users/:id/surveys' do
+  @surveys = Survey.where(user_id: params[:id])
+  erb :'surveys/index'
+end
