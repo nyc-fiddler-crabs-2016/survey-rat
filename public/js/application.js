@@ -23,18 +23,32 @@ $(document).ready(function() {
       url: url,
       data: $(this).serialize()
     }).done(function(response){
-    $("#test").append(response);
+    $("#new-question").append(response);
     });
   })
 
 
-// end J & K code
-
 // this has to be something already on the page
 // then focus on the form
-  $('#test').on('submit', '#question-creation', function(event){
+  $('#new-question').on('submit', '#question-creation', function(event){
     event.preventDefault();
-    console.log("Hello")
+    // var url = '/questions';
+    // $.ajax({
+    //   type: "POST",
+    //   url: url,
+    //   data: $(this).serialize()
+    // }).done(function(response){
+    //   $("#new-possible-choice").append(response);
+    // })
+
+
+    // })
+
   });
+
+
+// end J & K code
+
+
 });
 
