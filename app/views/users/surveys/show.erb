@@ -1,6 +1,15 @@
-<% @choices.each do |k,v| %>
-  <ul>
-    <li><%= k %></li>
-    <li><%= v %></li>
+<% @choices.each do |key,value| %>
+  <ul class="bar-chart">
+    <li><%= "Question #{key}" %></li>
+    <% hash = Hash.new(0) %>
+    <% value.each do |x|%>
+      <%hash[x] += 1 %>
+    <% end %>
+    <% hash.each do |k,v| %>
+      <% hash[k] = hash[k] / value.length.to_f %>
+    <% end %>
+    <li><% hash.each do |k,v| %></li>
+      <%= "<li class='bar' style='width:#{v * 100}%'>#{k}</li>"%>
+    <% end %>
   </ul>
 <% end %>

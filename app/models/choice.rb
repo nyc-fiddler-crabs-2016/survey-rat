@@ -14,3 +14,7 @@ class Choice < ActiveRecord::Base
     Choice.find_by(user_id: user_id, question_id: question_id)
   end
 end
+
+  def percent_of(total_number_of_choices)
+    self.to_f / total_number_of_choices.to_f * 100.0
+  end

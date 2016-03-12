@@ -35,3 +35,27 @@ background-color:#4CAF50;
 .show-edit-delete ul {
     list-style: none;
 }
+
+ul.graph
+{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.graph li
+{
+    margin-bottom: .5em;
+    padding: .2em;
+    background: #600;
+    color: #fff;
+}
+
+.bar {
+    background-color: blue;
+    color: white;
+}
+
+.bar-chart {
+    list-style: none;
+}
