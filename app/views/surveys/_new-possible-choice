@@ -1,0 +1,6 @@
+<!-- move this file to better directory? -->
+
+<form method="POST" action="/possible-choices">
+    <label for="possible-choice">Possible Choice:</label><br />
+    <input type="text" name="" size="50"><br />
+</form>

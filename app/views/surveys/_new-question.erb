@@ -1,0 +1,12 @@
+<!-- move this file to better directory? -->
+<form method="POST" action="/questions">
+
+    <!-- MAKE SURE THIS WORKS -->
+    <input type="hidden" name="<%= @survey.id%>" value="<%= @survey.id %>">
+
+    <label for="question">Question:</label><br />
+    <input type="text" name="question[content]" size="50" placeholder="question"><br />
+
+    <!-- AJAX here  -->
+  <input type="submit" value="Next Question">
+</form>

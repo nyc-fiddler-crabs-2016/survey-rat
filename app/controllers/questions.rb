@@ -4,3 +4,9 @@ get '/questions/:id' do
   erb :'questions/show'
 end
 
+
+# Added by J & K
+post '/questions' do
+  @question = Question.create(params[:question])
+  erb
+end
