@@ -13,4 +13,12 @@ class Choice < ActiveRecord::Base
   def self.has_already_answered?(user_id, question_id)
     Choice.find_by(user_id: user_id, question_id: question_id)
   end
+
+  def percent_of(total_number_of_choices)
+    self.to_f / total_number_of_choices.to_f * 100.0
+  end
+
+  def self.all_choices_in_taken_survey(id)
+    self.where(taken_survey_id: id)
+  end
 end

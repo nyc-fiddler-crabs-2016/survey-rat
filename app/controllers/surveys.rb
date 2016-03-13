@@ -8,9 +8,11 @@ get '/surveys/new' do
 end
 
 get '/surveys/:id' do
-  @survey = Survey.find_by(id: params[:id])
-  erb :'surveys/show'
+  @survey = Survey.find(params[:id])
+  @questions = @survey.questions
+  erb :'questions/show'
 end
+
 
 # handle if xhr & if errors here
 post '/surveys' do
@@ -22,4 +24,13 @@ post '/surveys' do
     @survey = Survey.create(params[:survey])
     erb :'surveys/_new-question', locals: {surveys: @survey}, layout: false
   end
+end
+
+delete '/surveys/:id' do
+  survey = Survey.find(params[:id])
+  if session[:user_id] == survey.user_id
+    survey.destroy
+  end
+  redirect "/"
+
 end

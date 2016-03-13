@@ -1,0 +1,15 @@
+<% if @all_stats.empty? %>
+  <div class="jumbotron"><h1>No one has taken the survey yet!</h1>  </div>
+<% else %>
+  <div class="jumbotron">
+  <% @all_stats.each do |question_name,options_hash| %>
+    <ul class="bar-chart">
+      <li class="question"><h2><%= "#{question_name}" %></h2></li>
+      <% options_hash.each do |option, option_data| %>
+        <%= "<li class='option'><h4>#{option}</h4></li>" %>
+        <%= "<li class='bar' style='width:#{option_data[1] * 90}%'>votes: #{option_data[0]}</li>"%>
+      <% end %>
+    </ul>
+  <% end %>
+  </div>
+ <% end %>

@@ -1,3 +1,9 @@
+#container {
+    margin: 0 auto;
+    max-width: 720px;
+
+}
+
 .nav-bar ul {
     list-style-type: none;
     margin: 0;
@@ -26,7 +32,67 @@
 background-color:#4CAF50;
 }
 
+
 #container {
     margin: 0 auto;
     width: 800px;
+}
+
+.show-edit-delete ul {
+    list-style: none;
+}
+
+ul.graph
+{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.graph li
+{
+    margin-bottom: .5em;
+    padding: .2em;
+    background: #600;
+    color: #fff;
+}
+
+.bar {
+    background-color: blue;
+    /*border: solid;*/
+    color: white;
+}
+
+.bar-chart {
+    list-style: none;
+}
+
+.question {
+    padding-left: 20px;
+}
+
+.show-edit-delete ul li {
+    display :inline-block;
+}
+
+form .delete {
+ background-color: transparent;
+  text-decoration: underline;
+  border: none;
+  color: blue;
+  cursor: pointer;
+}
+
+form:focus {
+  outline: none;
+}
+
+ul .survey-index {
+    margin: 0 auto;
+    list-style: none;
+}
+
+.question-jumbo {
+    text-align: center;
+>>>>>>> 97fa592b60c47cc5cf762ecaf1776b3a96abc7a6
 }

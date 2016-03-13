@@ -14,4 +14,16 @@ class Survey < ActiveRecord::Base
     true
   end
 
+  def self.all_stats(all_choices_hash)
+    all_stats = {}
+    all_choices_hash.each do |question_id, question_response_arr|
+      data_stats = Hash.new(0)
+      question_response_arr.each do |option_id|
+        data_stats[PossibleChoice.find(option_id).option] += 1
+      end
+      all_stats[Question.find(question_id).content] = data_stats
+    end
+    all_stats
+  end
+
 end
