@@ -1,0 +1,6 @@
+<h4><%= @question.content %></h4>
+<ul>
+  <% @question.possible_choices.each do |possible_choice| %>
+  <li><p><%= possible_choice.option %></p></li>
+  <% end %>
+</ul>

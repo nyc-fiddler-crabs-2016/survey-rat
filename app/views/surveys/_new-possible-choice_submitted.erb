@@ -1,6 +1,8 @@
+
 <div class="new-response">
 <form method="POST" class="possible-choice-creation" action="/possible_choices">
   <input type="hidden" name="possible_choice[question_id]" value="<%= @question.id%>">
+
   <label for="possible-choice">Possible Answer:</label><br />
   <input class="targetNewChoice" type="text" name="possible_choice[option]" size="50" required><br />
 
@@ -8,4 +10,15 @@
 
 </form>
 </div>
-
+<% if @possible_choices %>
+  <div id="possible-choice-list">
+    <ul>
+      <% @possible_choices.each do |possible_choice| %>
+        <li class="possible-choice-list-item"><%= possible_choice.option %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<p class="add-question"><a href="/">Add another question<a></p>
+<p><a href="/surveys">Submit Survey<a></p>
+</div>

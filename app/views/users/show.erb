@@ -1,10 +1,16 @@
 <div class = 'container'>
   <h1>Hello there, <%=@user.username %></h1>
 </div>
+  <div class="container-fluid">
+    <ul><h3>Taken Surveys</h3>
+    <% @taken_surveys.each do |survey_name| %>
+      <li><h4><%= survey_name %></h4></li>
+    <% end %>
+    </ul>
+  </div>
 <ul>
   <% @surveys.each do |survey| %>
-  <div class="col-lg-6">
-    <!-- <div class="jumbotron"> -->
+  <div class="jumbotron">
       <ul class="survey-index">
       <% if logged_in? && TakenSurvey.taken?(current_user.id, survey.id)%>
         <li><h4><h3><%= survey.title %></h3></li>
@@ -14,8 +20,7 @@
       <% if logged_in? && current_user.id == survey.user_id %>
         <div class="show-edit-delete">
           <ul>
-          <li><h4><a href=/users/<%= current_user.id%>/surveys/<%=survey.id%>>View</a></h4></li>
-          <li><h4><a href=/surveys/<%= survey.id %>/edit>Edit</a></h4></li>
+          <li><h4><a href=/users/<%= current_user.id%>/surveys/<%=survey.id%>>View Results</a></h4></li>
           <li><h4><form class="delete" action="surveys/<%= survey.id%>" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="DELETE">
@@ -24,18 +29,8 @@
         </div>
       <% end %>
     </ul>
-  <!-- </div> -->
 </div>
   <% end %>
-  <div class="col-lg-6">
-    <div class="jumbotron">
-      <ul><h3>Taken Surveys</h3>
-      <% @taken_surveys.each do |survey_name| %>
-        <li><h4><%= survey_name %></h4></li>
-      <% end %>
-      </ul>
-    </div>
-  </div>
 
 
 

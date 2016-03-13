@@ -10,8 +10,7 @@
       <% if logged_in? && current_user.id == survey.user_id %>
         <div class="show-edit-delete">
           <ul>
-          <li><h4><a href=/users/<%= current_user.id%>/surveys/<%=survey.id%>>View</a></h4></li>
-          <li><h4><a href=/surveys/<%= survey.id %>/edit>Edit</a></h4></li>
+          <li><h4><a href=/users/<%= current_user.id%>/surveys/<%=survey.id%>>View Results</a></h4></li>
           <li><h4><form class="delete" action="surveys/<%= survey.id%>" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="DELETE">
