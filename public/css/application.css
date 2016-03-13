@@ -53,9 +53,39 @@ ul.graph li
 
 .bar {
     background-color: blue;
+    /*border: solid;*/
     color: white;
 }
 
 .bar-chart {
     list-style: none;
+}
+
+.question {
+    padding-left: 20px;
+}
+
+.show-edit-delete ul li {
+    display :inline-block;
+}
+
+form .delete {
+ background-color: transparent;
+  text-decoration: underline;
+  border: none;
+  color: blue;
+  cursor: pointer;
+}
+
+form:focus {
+  outline: none;
+}
+
+ul .survey-index {
+    margin: 0 auto;
+    list-style: none;
+}
+
+.question-jumbo {
+    text-align: center;
 }

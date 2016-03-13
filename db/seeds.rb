@@ -24,4 +24,6 @@ Question.all.each do |question|
   end
 end
 
-
+# users for votes
+vote_users = []
+30.times {vote_users << User.create(username: Faker::Company.name, password: "password")}
