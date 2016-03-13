@@ -15,8 +15,6 @@ $(document).ready(function() {
     })
   })
 
-// J & K code
-
   $('#create-survey-form').on('submit', function(event){
     event.preventDefault();
     var url = '/surveys';
@@ -25,11 +23,18 @@ $(document).ready(function() {
       url: url,
       data: $(this).serialize()
     }).done(function(response){
-      $("#new-question").append(response);
+      // $("#survey-title")
+
+      if (response.length > 0) {
+        arr = response.split("|");
+        $("#survey-title").text("");
+        $("#survey-title-show").append(arr[0]);
+        $("#new-question").append(arr[1]);
+      }
     });
   })
 
-  $('#new-question').on('submit', '#question-creation', function(event){
+  $('#new-question').on('submit', '.question-creation', function(event){
     event.preventDefault();
     var url = '/questions';
     $.ajax({
@@ -37,23 +42,40 @@ $(document).ready(function() {
       url: url,
       data: $(this).serialize()
     }).done(function(response){
-      $("#new-possible-choice").append(response);
+      arr = response.split("|");
+      $("#current-question").html(arr[0])
+      $("#new-possible-choice").html(arr[1]);
     });
   })
 
-  $('#new-question').on('submit', '#possible-choice-creation', function(event){
+  $('#new-possible-choice').on('submit', '.possible-choice-creation', function(event){
     event.preventDefault();
-    // var url = '/possible_choices';
-    // $.ajax({
-    //   type: "POST",
-    //   url: url,
-    //   data: $(this).serialize()
-    // }).done(function(response){
-    //   $("#new-possible-choice").append(response);
-    // });
+    debugger
+    var url = '/possible_choices';
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: $(this).serialize()
+    }).done(function(response){
+      $("#new-possible-choice").html(response);
+    });
   })
 
-// end J & K code
+  $('#new-possible-choice').on('click', '.add-question', function(event){
+    event.preventDefault();
+    var url = '/questions/new/grab';
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: $(this).serialize()
+    }).done(function(response){
+    $("#current-question").text("");
+    $("#new-possible-choice").text("");
+    $(response).appendTo("#done-questions");
+      console.log(response);
+    });
+  });
+
 
 
 });

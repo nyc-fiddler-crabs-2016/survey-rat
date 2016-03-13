@@ -1,3 +1,4 @@
+<h3>Question: <%= @question.content %></h3> |
 <div class="new-response">
 <form method="POST" class="possible-choice-creation" action="/possible_choices">
   <input type="hidden" name="possible_choice[question_id]" value="<%= @question.id%>">

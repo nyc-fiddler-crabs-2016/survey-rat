@@ -1,12 +1,14 @@
-# created by j & k
-
-
-# handle if xhr & if errors here
 post '/possible_choices' do
-  # not sure if this is a good idea, but it works:
-  @question = Question.last
+  @question = Question.find_by(id: session[:question_id])
   @possible_choice = PossibleChoice.create(params[:possible_choice])
-  erb :'surveys/_new-possible-choice', layout: false
+  @possible_choices = @question.possible_choices
+  erb :'surveys/_new-possible-choice_submitted', layout: false
 end
 
+post '/possible_choices/new' do
 
+  @question = Question.find_by(id: session[:question_id])
+  @possible_choice = PossibleChoice.create(params[:possible_choice])
+  @possible_choices = @question.possible_choices
+  erb :'surveys/_new-possible-choice_submitted', layout: false
+end
