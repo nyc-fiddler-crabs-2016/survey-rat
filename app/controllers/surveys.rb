@@ -13,8 +13,6 @@ get '/surveys/:id' do
   erb :'questions/show'
 end
 
-
-# handle if xhr & if errors here
 post '/surveys' do
   if !params[:survey][:title].empty?
     @survey = Survey.create(params[:survey])

@@ -50,7 +50,6 @@ $(document).ready(function() {
 
   $('#new-possible-choice').on('submit', '.possible-choice-creation', function(event){
     event.preventDefault();
-    debugger
     var url = '/possible_choices';
     $.ajax({
       type: "POST",

@@ -11,7 +11,6 @@ get '/questions/:id' do
   erb :'questions/show'
 end
 
-# handle if xhr & if errors here
 post '/questions' do
   @question = Question.create(params[:question])
   session[:question_id] = @question.id

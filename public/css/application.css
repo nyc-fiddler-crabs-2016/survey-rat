@@ -94,5 +94,12 @@ ul .survey-index {
 
 .question-jumbo {
     text-align: center;
->>>>>>> 97fa592b60c47cc5cf762ecaf1776b3a96abc7a6
+}
+
+#create-survey {
+    text-align: center;
+}
+
+li {
+    list-style-type: none;
 }

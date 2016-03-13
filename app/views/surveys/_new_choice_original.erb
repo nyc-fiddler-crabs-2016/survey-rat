@@ -1,13 +1,12 @@
 <h3>Question: <%= @question.content %></h3> |
 <div class="new-response">
-<form method="POST" class="possible-choice-creation" action="/possible_choices">
-  <input type="hidden" name="possible_choice[question_id]" value="<%= @question.id%>">
-  <label for="possible-choice">Possible Answer:</label><br />
-  <input class="targetNewChoice" type="text" name="possible_choice[option]" size="50"><br />
+  <form method="POST" class="possible-choice-creation" action="/possible_choices">
+    <input type="hidden" name="possible_choice[question_id]" value="<%= @question.id%>">
+    <label for="possible-choice">Possible Answer:</label><br />
+    <input class="targetNewChoice" type="text" name="possible_choice[option]" size="50" required><br />
 
-  <input type="submit" value="Add Possible Answer">
+    <input type="submit" value="Add Possible Answer">
 
-</form>
+  </form>
 </div>
-<p><a href="/surveys">Submit Survey<a></p>
-</div>
+
