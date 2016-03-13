@@ -23,29 +23,33 @@ $(document).ready(function() {
       url: url,
       data: $(this).serialize()
     }).done(function(response){
-    $("#new-question").append(response);
+      $("#new-question").append(response);
     });
   })
 
-
-// this has to be something already on the page
-// then focus on the form
   $('#new-question').on('submit', '#question-creation', function(event){
     event.preventDefault();
-    // var url = '/questions';
+    var url = '/questions';
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: $(this).serialize()
+    }).done(function(response){
+      $("#new-possible-choice").append(response);
+    });
+  })
+
+  $('#new-question').on('submit', '#possible-choice-creation', function(event){
+    event.preventDefault();
+    // var url = '/possible_choices';
     // $.ajax({
     //   type: "POST",
     //   url: url,
     //   data: $(this).serialize()
     // }).done(function(response){
     //   $("#new-possible-choice").append(response);
-    // })
-
-
-    // })
-
-  });
-
+    // });
+  })
 
 // end J & K code
 

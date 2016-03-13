@@ -12,8 +12,14 @@ get '/surveys/:id' do
   erb :'surveys/show'
 end
 
+# handle if xhr & if errors here
 post '/surveys' do
-  @survey = Survey.create(params[:survey])
-  erb :'surveys/_new-question', locals: {surveys: @survey}, layout: false
-
+  binding.pry
+  if params[:survey][:title].empty?
+    @error = "survey name can not be blank"
+    erb :_errors, layout: false
+  else
+    @survey = Survey.create(params[:survey])
+    erb :'surveys/_new-question', locals: {surveys: @survey}, layout: false
+  end
 end

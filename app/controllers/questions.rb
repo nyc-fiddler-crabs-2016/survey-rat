@@ -6,8 +6,8 @@ end
 
 
 # Added by J & K
+# handle if xhr & if errors here
 post '/questions' do
   @question = Question.create(params[:question])
-  erb :'surveys/_new-possible-choice', locals: {questions: @question}
-  , layout: false
+  erb :'surveys/_new-possible-choice', layout: false
 end

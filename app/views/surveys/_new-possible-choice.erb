@@ -1,8 +1,14 @@
 <!-- move this file to better directory? -->
 
-<form method="POST" action="/possible-choices">
-    <input type="hidden" name="" value="">
-    <label for="possible-choice">Possible Choice:</label><br />
-    <input type="text" name="" size="50"><br />
-    <input type="submit" value="Submit">
+<form method="POST" id="possible-choice-creation" action="/possible_choices">
+  <input type="hidden" name="possible_choice[question_id]" value="<%= @question.id%>">
+
+  <label for="possible-choice">Possible Answer:</label><br />
+  <input type="text" name="possible_choice[option]" size="50"><br />
+
+  <input type="submit" value="Add Possible Answer">
+
 </form>
+
+<p><a href="/surveys">Submit Survey<a></p>
+

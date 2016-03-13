@@ -1,5 +1,5 @@
 class Survey < ActiveRecord::Base
-  validates :title, null: false
+  validates :title, null: false, presence: true
 
   belongs_to :user
   has_many :taken_surveys
