@@ -25,3 +25,8 @@
 .active {
 background-color:#4CAF50;
 }
+
+#container {
+    margin: 0 auto;
+    width: 800px;
+}

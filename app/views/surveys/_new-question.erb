@@ -1,0 +1,10 @@
+<!-- move this file to better directory? -->
+<form method="POST" id="question-creation" action="/questions">
+
+    <input type="hidden" name="question[survey_id]" value="<%= @survey.id %>">
+
+    <label for="question">Question:</label><br />
+    <input type="text" name="question[content]" size="50" placeholder="question"><br />
+
+  <input type="submit" class="question-submission" value="Add Possible Answer">
+</form>
