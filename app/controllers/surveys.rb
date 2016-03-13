@@ -14,6 +14,9 @@ get '/surveys/:id' do
 end
 
 delete '/surveys/:id' do
-  Survey.find(params[:id]).destroy
+  survey = Survey.find(params[:id])
+  if session[:user_id] == survey.user_id
+    survey.destroy
+  end
   redirect "/"
 end

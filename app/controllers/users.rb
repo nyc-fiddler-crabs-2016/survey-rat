@@ -20,6 +20,8 @@ end
 
 get '/users/:id' do
   @user = User.find_by(id: params[:id])
+  @surveys = @user.surveys
+  @taken_surveys = @user.taken_survey_names
   erb :'/users/show'
 end
 
@@ -27,17 +29,10 @@ get '/users/:id/surveys/:id' do
   @user = User.find_by(id: params[:captures][0])
   @survey = Survey.find_by(id: params[:captures][1])
   if @survey.user_id == current_user.id
-    @taken_surveys = TakenSurvey.where(survey_id: @survey.id)
-    @choices = {}
-    @taken_surveys.each do |taken_survey|
-      Choice.where(taken_survey_id: taken_survey.id).each do |choice|
-        if @choices[choice.question_id].nil?
-          @choices[choice.question_id] = []
-        end
-        @choices[choice.question_id] << choice.possible_choice_id
-      end
-    end
-
+    @taken_surveys = TakenSurvey.current_survey_collect(@survey.id)
+    questions_answers_hash = TakenSurvey.questions_answers_hash(@taken_surveys)
+    @all_stats = Survey.all_stats(questions_answers_hash)
+    TakenSurvey.all_stats_add_percents(@all_stats)
     erb :"users/surveys/show"
   else
     redirect "/"
